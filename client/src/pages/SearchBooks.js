@@ -5,7 +5,7 @@ import Auth from '../utils/auth';
 import { useMutation } from '@apollo/client';
 import { SAVE_BOOK } from '../utils/mutations';
 
-import { saveBook, searchGoogleBooks } from '../utils/API';
+import { searchGoogleBooks } from '../utils/API';
 import { saveBookIds, getSavedBookIds } from '../utils/localStorage';
 
 const SearchBooks = () => {
@@ -48,7 +48,6 @@ const SearchBooks = () => {
         title: book.volumeInfo.title,
         description: book.volumeInfo.description,
         image: book.volumeInfo.imageLinks?.thumbnail || '',
-        link: book.volumeInfo.infoLink
       }));
 
       setSearchedBooks(bookData);
@@ -71,10 +70,11 @@ const SearchBooks = () => {
     }
 
     try {
-      const { data } = await saveBook({
-        variables: { book: bookToSave }
+      
+      console.log(bookToSave);
+      await saveBook({
+        variables: { ...bookToSave }
       });
-      console.log(data);
 
       // if book successfully saves to user's account, save book id to state
       setSavedBookIds([...savedBookIds, bookToSave.bookId]);
@@ -135,6 +135,7 @@ const SearchBooks = () => {
                       {savedBookIds?.some((savedBookId) => savedBookId === book.bookId)
                         ? 'This book has already been saved!'
                         : 'Save this Book!'}
+                        {error && <span className="ml-2">Something went wrong...</span>}
                     </Button>
                   )}
                 </Card.Body>
