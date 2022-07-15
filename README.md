@@ -16,13 +16,13 @@ This application uses a fully functional Google Books API search engine to save 
 
 ## Installation:
 
-To install this aplication, you will clone the repository from GitHub and `run npm i` in the root directory as well as the client and server folders. To connect to the server, run `npm run develop`. 
+To install this aplication, you will clone the repository from GitHub and `run npm i` in the root directory as well as in the client and server folders. To connect to the server, run `npm run develop`. 
 
 ## Usage:
 
 The deployed application can be found on [Heroku](https://radiant-depths-46087.herokuapp.com/).
 
-![Website Screenshot]()
+![Website Screenshot](https://github.com/charliebear2000/book-search-engine/blob/main/website-screenshot.png)
 
 ## License:
 
